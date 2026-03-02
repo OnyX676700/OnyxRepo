@@ -90,3 +90,25 @@ if (sections.length && navLinks.length) {
 
   sections.forEach(sec => spyObserver.observe(sec));
 }
+
+const track = document.querySelector('.carousel-track');
+const cards = Array.from(track.children);
+const prevBtn = document.querySelector('.carousel-btn.prev');
+const nextBtn = document.querySelector('.carousel-btn.next');
+
+let index = 0;
+
+function updateCarousel() {
+  const cardWidth = cards[0].getBoundingClientRect().width + 32; // card + gap
+  track.style.transform = `translateX(-${index * cardWidth}px)`;
+}
+
+nextBtn.addEventListener('click', () => {
+  if (index < cards.length - 1) index++;
+  updateCarousel();
+});
+
+prevBtn.addEventListener('click', () => {
+  if (index > 0) index--;
+  updateCarousel();
+});
