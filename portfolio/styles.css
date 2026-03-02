@@ -684,3 +684,46 @@ footer .small { font-size: 11px; opacity: 0.5; }
   .hero-layout { gap: 36px; }
   #hero { padding: 60px 0 50px; }
 }
+
+/* =============================================
+   CAROUSEL PROGETTI
+   ============================================= */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.4s ease;
+}
+
+.card--project {
+  min-width: 300px;
+  flex: 0 0 80%;
+  max-width: 400px;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.6);
+}
+
+.carousel-btn.prev { left: 0; }
+.carousel-btn.next { right: 0; }
