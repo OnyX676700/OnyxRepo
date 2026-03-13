@@ -90,10 +90,10 @@ if (languageBars.length && 'IntersectionObserver' in window) {
   const barObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // forza il reflow così la transizione parte da 0
         entry.target.style.width = '0%';
         requestAnimationFrame(() => {
-          entry.target.style.width = entry.target.style.getPropertyValue('--bar-width') ||
+          entry.target.style.width =
+            entry.target.style.getPropertyValue('--bar-width') ||
             getComputedStyle(entry.target).getPropertyValue('--bar-width');
         });
         obs.unobserve(entry.target);
@@ -101,7 +101,6 @@ if (languageBars.length && 'IntersectionObserver' in window) {
     });
   }, { threshold: 0.4 });
 
-  // azzera subito la width, la CSS var resta come target
   languageBars.forEach(bar => {
     bar.style.width = '0%';
     barObserver.observe(bar);
