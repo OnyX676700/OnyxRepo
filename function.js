@@ -7,6 +7,45 @@ window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
 
+// ── Hamburger menu ───────────────────────────
+const hamburger = document.getElementById('hamburger');
+const navMobile = document.getElementById('nav-mobile');
+
+function closeMenu() {
+  hamburger.classList.remove('open');
+  navMobile.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  navMobile.setAttribute('aria-hidden', 'true');
+}
+
+function openMenu() {
+  hamburger.classList.add('open');
+  navMobile.classList.add('open');
+  hamburger.setAttribute('aria-expanded', 'true');
+  navMobile.setAttribute('aria-hidden', 'false');
+}
+
+if (hamburger && navMobile) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  // Chiudi cliccando un link del menu mobile
+  navMobile.querySelectorAll('a[data-mobile-nav]').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Chiudi cliccando fuori dall'header
+  document.addEventListener('click', (e) => {
+    if (!header.contains(e.target)) closeMenu();
+  });
+
+  // Chiudi se si allarga la finestra oltre il breakpoint
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeMenu();
+  }, { passive: true });
+}
+
 // ── Typing effect nell'hero ──────────────────
 const typingTarget = document.getElementById('typing-target');
 const phrases = [
@@ -90,10 +129,10 @@ if (languageBars.length && 'IntersectionObserver' in window) {
   const barObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // forza il reflow così la transizione parte da 0
         entry.target.style.width = '0%';
         requestAnimationFrame(() => {
-          entry.target.style.width = entry.target.style.getPropertyValue('--bar-width') ||
+          entry.target.style.width =
+            entry.target.style.getPropertyValue('--bar-width') ||
             getComputedStyle(entry.target).getPropertyValue('--bar-width');
         });
         obs.unobserve(entry.target);
@@ -101,7 +140,6 @@ if (languageBars.length && 'IntersectionObserver' in window) {
     });
   }, { threshold: 0.4 });
 
-  // azzera subito la width, la CSS var resta come target
   languageBars.forEach(bar => {
     bar.style.width = '0%';
     barObserver.observe(bar);
