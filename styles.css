@@ -2,17 +2,17 @@
    VARIABILI CSS
    ============================================= */
 :root {
-  --accent:       #7D70BA;
-  --accent-light: #DEC1FF;
-  --bg:           #1E201E;
-  --bg-alt:       #191b19;
-  --bg-card:      #252725;
-  --text:         #ECDFFA;
-  --text-muted:   #9a90b0;
-  --header-bg:    #151715;
-  --card-border:  #2e302e;
-  --card-shadow:  0 2px 20px rgba(0,0,0,0.25);
-  --card-hover:   0 8px 40px rgba(125,112,186,0.2);
+  --accent:       #EAB308;
+  --accent-light: #FDE047;
+  --bg:           #0A0A0A;
+  --bg-alt:       #050505;
+  --bg-card:      #141414;
+  --text:         #FEFCE8;
+  --text-muted:   #6B5E00;
+  --header-bg:    #030303;
+  --card-border:  #2A2A00;
+  --card-shadow:  0 2px 20px rgba(0,0,0,0.4);
+  --card-hover:   0 8px 40px rgba(234,179,8,0.2);
   --radius:       12px;
   --radius-sm:    7px;
   --font-display: 'Syne', sans-serif;
