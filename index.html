@@ -8,12 +8,30 @@
   <link rel="apple-touch-icon" href="img/logo.png">
   <meta name="description" content="Portfolio di Federico La Russa, Junior Developer e Perito Informatico da Trapani.">
   <meta name="author" content="Federico La Russa">
-  <meta property="og:url" content="https://tuosito.it">
+  <meta property="og:url" content="https://onyx676700.github.io/Portfolio/">
   <meta property="og:site_name" content="Federico La Russa Portfolio">
   <meta property="og:title" content="Personal Portfolio">
   <meta property="og:description" content="Portfolio di Federico La Russa, Junior Developer e Perito Informatico.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="img/Pic.png">
+
+  <!-- JSON-LD structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Federico La Russa",
+    "jobTitle": "Junior Developer",
+    "url": "https://onyx676700.github.io/Portfolio/",
+    "email": "fedelarussa06@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Trapani", "addressCountry": "IT" },
+    "sameAs": [
+      "https://github.com/OnyX676700",
+      "https://www.linkedin.com/in/federico-la-russa-520085381/"
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -28,7 +46,7 @@
   <div class="container header-content">
 
     <div class="header-left">
-      <img src="img/Pic.png" alt="Foto di Federico La Russa" class="profile-pic" width="44" height="44" fetchpriority="high">
+      <img src="img/Pic.png" alt="Foto di Federico La Russa" class="profile-pic" width="44" height="44" fetchpriority="high" loading="eager">
       <span class="header-name">Federico La Russa</span>
     </div>
 
@@ -54,7 +72,7 @@
 
   </div>
 
-  <!-- Tendina mobile -->
+  <!-- Sidebar mobile -->
   <nav class="nav-mobile" id="nav-mobile" aria-label="Menu mobile" aria-hidden="true">
     <ul>
       <li><a href="#about"     data-nav data-mobile-nav>Chi sono</a></li>
@@ -68,10 +86,15 @@
   </nav>
 </header>
 
+<!-- Bottone torna su -->
+<button class="back-to-top" id="back-to-top" aria-label="Torna in cima">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
 <main>
 
   <!-- HERO -->
-  <section id="hero">
+  <section id="hero" aria-label="Presentazione">
     <div class="container hero-layout">
       <div class="hero-text">
         <p class="hero-label">👋 Benvenuti nel mio portfolio.</p>
@@ -84,7 +107,7 @@
       </div>
       <div class="hero-image">
         <div class="avatar-ring">
-          <img src="img/Pic.png" alt="Ritratto di Federico La Russa" class="avatar" width="280" height="280">
+          <img src="img/Pic.png" alt="Ritratto di Federico La Russa" class="avatar" width="280" height="280" loading="eager">
         </div>
       </div>
     </div>
@@ -139,20 +162,20 @@
           <div class="badges">
             <span class="badge"><i class="fa-brands fa-html5"></i> HTML</span>
             <span class="badge"><i class="fa-brands fa-css3-alt"></i> CSS</span>
-            <span class="badge"> Tailwind CSS</span>
+            <span class="badge">Tailwind CSS</span>
             <span class="badge"><i class="fa-brands fa-js"></i> JavaScript</span>
-            <span class="badge"> TypeScript</span>
+            <span class="badge">TypeScript</span>
             <span class="badge"><i class="fa-brands fa-java"></i> Java</span>
             <span class="badge"><i class="fa-brands fa-php"></i> PHP</span>
-            <span class="badge"> C</span>
-            <span class="badge"> C++</span>
+            <span class="badge">C</span>
+            <span class="badge">C++</span>
             <span class="badge"><i class="fa-solid fa-code"></i> Assembly</span>
           </div>
         </div>
         <div class="skill-group reveal">
           <h3><i class="fa-solid fa-database"></i> Database &amp; Sistemi</h3>
           <div class="badges">
-            <span class="badge"> MySQL</span>
+            <span class="badge">MySQL</span>
             <span class="badge"><i class="fa-brands fa-windows"></i> Windows</span>
             <span class="badge"><i class="fa-solid fa-folder"></i> Pacchetto Office</span>
             <span class="badge"><i class="fa-solid fa-envelope"></i> Posta elettronica</span>
@@ -162,7 +185,7 @@
           <h3><i class="fa-solid fa-network-wired"></i> Reti &amp; Sicurezza</h3>
           <div class="badges">
             <span class="badge"><i class="fa-solid fa-laptop"></i> Cisco Packet Tracer</span>
-            <span class="badge"> Router &amp; Switch</span>
+            <span class="badge">Router &amp; Switch</span>
             <span class="badge"><i class="fa-solid fa-shield-alt"></i> Sicurezza informatica</span>
           </div>
         </div>
@@ -184,7 +207,7 @@
             <span class="badge badge--tech">CSS</span>
           </div>
           <p>Applicazione interattiva sviluppata in collaborazione con Zucchetti per indovinare personaggi del mondo STEM.</p>
-          <a href="#" class="btn-card disabled" aria-disabled="true">Non disponibile</a>
+          <a href="#" class="btn-card disabled" aria-disabled="true" tabindex="-1">Non disponibile</a>
         </article>
         <article class="card card--project reveal">
           <div class="card-icon"><i class="fa-solid fa-user-circle"></i></div>
@@ -207,7 +230,7 @@
             <span class="badge badge--tech">Tailwind CSS</span>
           </div>
           <p>Sito di un centro di lavoro collaborativo a Milano.</p>
-          <a href="#" class="btn-card disabled" aria-disabled="true">Non disponibile</a>
+          <a href="#" class="btn-card disabled" aria-disabled="true" tabindex="-1">Non disponibile</a>
         </article>
       </div>
     </div>
@@ -221,14 +244,18 @@
         <div class="language-card reveal">
           <div class="language-header">
             <div class="language-flag-wrap">
-              <img src="https://flagcdn.com/w80/it.png" alt="Bandiera Italia" class="language-flag-img">
+              <img src="https://flagcdn.com/w80/it.png"
+                   alt="Bandiera Italia"
+                   class="language-flag-img"
+                   loading="lazy"
+                   onerror="this.style.display='none';this.parentElement.innerHTML='🇮🇹'">
             </div>
             <div>
               <h3>Italiano</h3>
               <span class="language-level native">Madrelingua</span>
             </div>
           </div>
-          <div class="language-bar-wrap-bar">
+          <div class="language-bar-wrap">
             <div class="language-bar" style="--bar-width: 100%"></div>
           </div>
           <p class="language-note">Lingua madre, parlata e scritta a livello avanzato in ogni contesto.</p>
@@ -236,14 +263,18 @@
         <div class="language-card reveal">
           <div class="language-header">
             <div class="language-flag-wrap">
-              <img src="https://flagcdn.com/w80/gb.png" alt="Bandiera UK" class="language-flag-img">
+              <img src="https://flagcdn.com/w80/gb.png"
+                   alt="Bandiera UK"
+                   class="language-flag-img"
+                   loading="lazy"
+                   onerror="this.style.display='none';this.parentElement.innerHTML='🇬🇧'">
             </div>
             <div>
               <h3>Inglese</h3>
               <span class="language-level b1">Livello B1</span>
             </div>
           </div>
-          <div class="language-bar-wrap-bar">
+          <div class="language-bar-wrap">
             <div class="language-bar" style="--bar-width: 55%"></div>
           </div>
           <p class="language-note">Lettura tecnica, documentazione e comunicazione scritta di base.</p>
@@ -297,6 +328,7 @@
   <div class="container footer-inner">
     <p>© <span id="year"></span> Realizzato e progettato da Federico La Russa · Tutti i diritti riservati</p>
     <p class="small">Designed and developed from scratch with HTML, CSS and Vanilla JavaScript.</p>
+    <p class="small footer-updated">Ultimo aggiornamento: <span id="last-updated"></span></p>
   </div>
 </footer>
 

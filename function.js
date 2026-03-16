@@ -1,8 +1,19 @@
 // ── Anno nel footer ─────────────────────────
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// ── Data ultimo aggiornamento ────────────────
+const lastUpdatedEl = document.getElementById('last-updated');
+if (lastUpdatedEl) {
+  const months = [
+    'gennaio','febbraio','marzo','aprile','maggio','giugno',
+    'luglio','agosto','settembre','ottobre','novembre','dicembre'
+  ];
+  const d = new Date(document.lastModified);
+  lastUpdatedEl.textContent = `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+
 // ── Header: classe "scrolled" allo scroll ───
-const header  = document.getElementById('site-header');
+const header = document.getElementById('site-header');
 window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
@@ -18,7 +29,7 @@ function openMenu() {
   overlay.classList.add('active');
   hamburger.setAttribute('aria-expanded', 'true');
   navMobile.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden'; // blocca scroll pagina
+  document.body.style.overflow = 'hidden';
 }
 
 function closeMenu() {
@@ -31,24 +42,33 @@ function closeMenu() {
 }
 
 if (hamburger && navMobile && overlay) {
-  // Toggle al click hamburger
   hamburger.addEventListener('click', (e) => {
     e.stopPropagation();
     hamburger.classList.contains('open') ? closeMenu() : openMenu();
   });
 
-  // Chiudi cliccando l'overlay
   overlay.addEventListener('click', closeMenu);
 
-  // Chiudi cliccando un link del menu mobile
   navMobile.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', closeMenu);
   });
 
-  // Chiudi se si allarga oltre 900px
   window.addEventListener('resize', () => {
     if (window.innerWidth > 900) closeMenu();
   }, { passive: true });
+}
+
+// ── Bottone torna su ─────────────────────────
+const backToTop = document.getElementById('back-to-top');
+
+if (backToTop) {
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }
 
 // ── Typing effect nell'hero ──────────────────
