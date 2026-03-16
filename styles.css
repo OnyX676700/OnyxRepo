@@ -583,7 +583,7 @@ footer .small { font-size: 11px; opacity: 0.5; }
 }
 
 /* =============================================
-   RESPONSIVE
+   RESPONSIVE AGGIORNATO
    ============================================= */
 @media (max-width: 900px) {
   .hero-layout { grid-template-columns: 1fr; text-align: center; }
