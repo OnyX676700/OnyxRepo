@@ -12,7 +12,7 @@
   --header-bg:    #020A0E;
   --card-border:  #0E2A36;
   --card-shadow:  0 2px 20px rgba(0,0,0,0.4);
-  --card-hover:   0 8px 40px rgba(0,105,146,0.25);
+  --card-hover:   0 12px 40px rgba(0,105,146,0.18), 0 2px 8px rgba(0,0,0,0.3);
   --radius:       12px;
   --radius-sm:    7px;
   --font-display: 'Syne', sans-serif;
@@ -406,58 +406,124 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
 .about-grid p:last-child { grid-column: 1 / -1; }
 
 /* =============================================
-   CARDS
+   CARDS — VERSIONE MIGLIORATA
    ============================================= */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
+
 .card {
   background: var(--bg-card);
   border-radius: var(--radius);
   padding: 26px;
-  box-shadow: var(--card-shadow);
   display: flex;
   flex-direction: column;
   gap: 10px;
   border: 1px solid var(--card-border);
-  border-top: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
+
+/* border-top animato — scaleX invece di toggle, nessun salto visivo */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card:hover::before { transform: scaleX(1); }
+
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
   box-shadow: var(--card-hover);
-  border-top-color: var(--accent);
+  border-color: rgba(0,105,146,0.35);
+}
+
+/* numero ordinale decorativo */
+.card-number {
+  position: absolute;
+  top: 18px; right: 20px;
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.025);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: color var(--transition);
+}
+.card:hover .card-number { color: rgba(241,211,2,0.06); }
+
+/* icona con sfondo quadrato arrotondato */
+.card-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: rgba(0,105,146,0.12);
+  border: 1px solid rgba(0,105,146,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  color: var(--accent);
+  margin-bottom: 2px;
+  flex-shrink: 0;
+  transition: background var(--transition), border-color var(--transition);
+}
+.card:hover .card-icon {
+  background: rgba(0,105,146,0.22);
   border-color: var(--accent);
 }
-.card-icon { font-size: 20px; color: var(--accent); margin-bottom: 4px; }
-.card h3 { font-family: var(--font-display); font-size: 17px; color: var(--text); }
-.card-meta { font-size: 12px; color: var(--accent-light); letter-spacing: 0.03em; }
-.card p { font-size: 15px; color: var(--text); line-height: 1.65; flex: 1; }
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--text);
+  padding-right: 32px;
+}
+.card-meta { font-size: 12px; color: var(--accent-light); letter-spacing: 0.03em; opacity: 0.85; }
+.card p { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.65; flex: 1; }
+
 .tech-badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0; }
+
+/* btn-card con freccia animata */
 .btn-card {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   margin-top: auto;
   padding: 8px 16px;
   background: transparent;
   color: var(--accent-light);
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
   border-radius: var(--radius-sm);
   align-self: flex-start;
-  border: 1px solid var(--accent);
-  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+  border: 1px solid rgba(0,105,146,0.4);
+  letter-spacing: 0.04em;
+  transition: background var(--transition), color var(--transition),
+              border-color var(--transition), box-shadow var(--transition);
+}
+.btn-card i {
+  font-size: 11px;
+  transition: transform 0.22s ease;
 }
 .btn-card:hover {
   background: var(--accent);
   color: var(--text);
+  border-color: var(--accent);
   box-shadow: 0 4px 16px rgba(0,105,146,0.3);
 }
+.btn-card:hover i { transform: translateX(3px); }
+
 .btn-card.disabled {
-  border-color: var(--card-border);
-  color: var(--accent-light);
-  opacity: 0.4;
+  border-color: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.2);
+  opacity: 1;
   pointer-events: none;
   cursor: default;
 }
@@ -526,7 +592,6 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
 .skill-group h3 i { color: var(--accent); }
 .badges { display: flex; flex-wrap: wrap; gap: 8px; }
 
-/* Badge gialli SOLO nella sezione competenze */
 .skill-group .badge {
   color: #FFFFFF;
   border-color: rgba(241, 211, 2, 0.3);
@@ -707,6 +772,7 @@ footer .small { font-size: 11px; opacity: 0.5; }
   .back-to-top { transition: none; animation: none; }
   .reveal { opacity: 1; transform: none; }
   .back-to-top { transition: none; }
+  .card::before { transition: none; }
   .avatar-ring::before, .avatar-ring::after, .hero-sub::after { animation: none; }
   .language-bar { transition: none; }
 }
