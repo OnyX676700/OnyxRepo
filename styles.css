@@ -528,7 +528,7 @@ section:nth-of-type(even) { background-color: var(--bg-alt); }
 
 /* Badge gialli SOLO nella sezione competenze */
 .skill-group .badge {
-  color: var(--accent-light);
+  color: #FFFFFF;
   border-color: rgba(241, 211, 2, 0.3);
   background: rgba(241, 211, 2, 0.05);
 }
