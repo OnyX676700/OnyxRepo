@@ -75,7 +75,7 @@ if (backToTop) {
 const typingTarget = document.getElementById('typing-target');
 const phrases = [
   "Appassionato di web development e reti.",
-  "Studio, costruisco, miglioro.",
+  "Front-end curato, back-end solido, risultato impeccabile.",
   "Trasformo idee in codice funzionante.",
 ];
 
